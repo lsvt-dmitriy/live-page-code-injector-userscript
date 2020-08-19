@@ -8,7 +8,7 @@ socket.on('connect', async () => {
 
 	if (window.location.href.indexOf('editlive') !== -1) {
 		try {
-			let selector = window.location.href.split('?')[1].split('&').filter(el => el.match(/editlive/))[0].split('=')[1];
+			let selector = decodeURI(window.location.href.split('?')[1].split('&').filter(el => el.match(/editlive/))[0].split('=')[1]);
 			let html = $(selector).html();
 			if (html) {
 				html = `<!-- selector: "${selector}" -->\n` + html;
